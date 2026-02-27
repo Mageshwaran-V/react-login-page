@@ -609,3 +609,106 @@ body {
   word-break: break-all;
 }
 .info-table tr:last-child td { border-bottom: none; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SIGNUP PAGE ADDITIONS
+═══════════════════════════════════════════════════════════════════════════ */
+
+/* Side-by-side first/last name */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 480px) {
+  .field-row { grid-template-columns: 1fr; gap: 0; }
+}
+
+/* Input valid state */
+.field input.ok {
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+.field input.ok:focus {
+  box-shadow: 0 0 0 3px rgba(34,197,94,.15);
+}
+
+/* Label ok/err inline badges */
+.lbl-ok  { color: #22c55e; font-weight: 700; }
+.lbl-err { color: var(--red); font-weight: 700; }
+
+/* Password strength bar */
+.strength-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+.strength-bar {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+.strength-seg {
+  height: 4px;
+  flex: 1;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+.strength-label {
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 44px;
+  text-align: right;
+  transition: color 0.3s;
+}
+
+/* Password rule checklist */
+.pw-rules {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 12px;
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.pw-rules li {
+  font-size: 11.5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.rule-ok   { color: #16a34a; }
+.rule-fail { color: var(--text-3); }
+
+/* Terms checkbox row */
+.terms-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-2);
+  cursor: pointer;
+  margin-bottom: 4px;
+  line-height: 1.5;
+  user-select: none;
+}
+.terms-row input[type='checkbox'] {
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+  accent-color: var(--indigo);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.terms-row a {
+  color: var(--indigo);
+  font-weight: 600;
+  text-decoration: none;
+}
+.terms-row a:hover { text-decoration: underline; }
+.terms-err { color: var(--red); }

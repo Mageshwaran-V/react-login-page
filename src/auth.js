@@ -6,6 +6,19 @@ const USERS = [
   { email: 'demo@example.com',  password: 'Demo@1234',  name: 'Demo User',  role: 'Guest',         avatar: 'DU' },
 ];
 
+export function isEmailTaken(email) {
+  return USERS.some((u) => u.email.toLowerCase() === email.toLowerCase());
+}
+
+export function register({ firstName, lastName, email, password }) {
+  if (isEmailTaken(email)) return { error: 'email_taken' };
+  const name   = `${firstName} ${lastName}`;
+  const avatar = (firstName[0] + lastName[0]).toUpperCase();
+  const user   = { email, password, name, role: 'Member', avatar };
+  USERS.push(user);
+  return { user };
+}
+
 export function login(email, password, remember = false) {
   const found = USERS.find(
     (u) => u.email === email && u.password === password

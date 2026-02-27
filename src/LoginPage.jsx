@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { login, getSession } from './auth';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -206,7 +206,7 @@ export default function LoginPage() {
 
           <p className="signup-hint">
             Don&apos;t have an account?{' '}
-            <a href="#signup">Create one for free</a>
+            <Link to="/signup">Create one for free</Link>
           </p>
         </div>
       </main>
